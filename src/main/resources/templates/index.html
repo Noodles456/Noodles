@@ -23,8 +23,24 @@ window.onload=function () {
 </script>
 <body>
 <div th:insert="~{nav :: nav}"></div>
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style=" background-color: gainsboro;" >
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 btn-group"  role="group" aria-label="...">
+
+           <span> <a th:class="${search==null}? 'active btn btn-default': 'btn btn-default'" th:href="@{/(page=${pagList.page},size=${pagList.size},search=null,zero=${zero})}">全部</a>
+           </span>
+        <span>    <a th:class="${search=='SpringBoot'}? 'active btn btn-default': 'btn btn-default'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='SpringBoot',zero=${zero})}">SpringBoot</a>
+        </span>
+
+    <span><a th:class="${search=='Spring'}? 'active btn btn-default': 'btn btn-default'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='Spring',zero=${zero})}" >Spring</a>
+    </span>
+    <span><a th:class="${search=='java'}? 'active btn btn-default': 'btn btn-default'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='java',zero=${zero})}" >java</a>
+    </span>
+</div>
+</div>
 <div class="container-fluid main">
+
     <div class="row">
+
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h3>
        <ul class="nav nav-tabs aw-nav-tabs active hidden-xs pull-right tabs">
