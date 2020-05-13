@@ -47,9 +47,6 @@
                 <a th:href="@{'/publish/'+${question.id}}" class="noodles-menu"
                    th:if="${session.user!=null && session.user.id==question.creator}">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span></a>
-                <a th:href="@{'/del/'+${question.id}}" class="noodles-menu"
-                   th:if="${session.user!=null && session.user.id==question.creator}">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">删除</span></a>
                 <span class="label label-success" style="margin: 0px 1px" th:each="tag :${question.tag.split(',')}">
 
                     <span class="glyphicon glyphicon-tag"   th:text="${tag}"></span>
