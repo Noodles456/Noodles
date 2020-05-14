@@ -60,7 +60,7 @@ window.onload=function () {
                 </div>
                 <div class="media-body">
                    <h4 class="media-heading">
-                       <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}">
+                       <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}" style="text-decoration: none">
                        </a>
                    </h4>
                     <span class="desc" >
@@ -70,7 +70,7 @@ window.onload=function () {
                     </span>
                     </span>
                     <span th:if="${session.user!=null}">
-                        <a class="pull-right" th:href="@{'/question/'+${question.id}}">回复</a>
+                        <a class="pull-right" th:href="@{'/question/'+${question.id}}" style="color: #999">回复</a>
                     </span>
 
                 </div>
