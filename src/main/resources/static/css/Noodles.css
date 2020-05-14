@@ -7,6 +7,11 @@ body{
  background-color: white;
 
 }
+.navg{
+    background-color: gainsboro;
+    margin-top: -23px;
+
+}
 .hot{
     display: inline-block;
     height: 20px;
