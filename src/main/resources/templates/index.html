@@ -12,41 +12,41 @@
 
 </head>
 <script type="application/javascript">
-window.onload=function () {
+    window.onload=function () {
 
-    var closable=window.localStorage.getItem("closable");
-    if(closable=="true"){
-        window.close();
-        window.localStorage.removeItem("closable");
+        var closable=window.localStorage.getItem("closable");
+        if(closable=="true"){
+            window.close();
+            window.localStorage.removeItem("closable");
+        }
     }
-}
 </script>
 <body>
 <div th:insert="~{nav :: nav}"></div>
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 navg" >
-<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 btn-group"  role="group" aria-label="...">
+    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 btn-group"  role="group" aria-label="...">
 
            <span> <a th:class="${search==null}? 'active btn btn-default btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search=null,zero=${zero})}">全部</a>
            </span>
         <span>    <a th:class="${search=='SpringBoot'}? 'active btn btn-default btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='SpringBoot',zero=${zero})}">SpringBoot</a>
         </span>
 
-    <span><a th:class="${search=='Spring'}? 'active btn btn-default btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='Spring',zero=${zero})}" >Spring</a>
+        <span><a th:class="${search=='Spring'}? 'active btn btn-default btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='Spring',zero=${zero})}" >Spring</a>
     </span>
-    <span><a th:class="${search=='java'}? 'active btn btn-defaultdd btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='java',zero=${zero})}" >java</a>
+        <span><a th:class="${search=='java'}? 'active btn btn-defaultdd btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='java',zero=${zero})}" >java</a>
     </span>
+    </div>
 </div>
-</div>
-<div class="container-fluid main">
+<div class="container-fluid main" th:if="${pagList.data.size()!=0}">
     <div class="row">
 
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h3>
-       <ul class="nav nav-tabs aw-nav-tabs active hidden-xs pull-right tabs">
-              <li th:class="${zero=='new'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='new')}"><span>推荐</span></a></li>
-              <li th:class="${zero=='hot'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='hot')}"><span>最热</span></a></li>
-            <li th:class="${zero=='no'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='no')}"><span style="color: #E51C37">消灭零回复</span></a></li>
-          </ul>
+            <ul class="nav nav-tabs aw-nav-tabs active hidden-xs pull-right tabs">
+                <li th:class="${zero=='new'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='new')}"><span>推荐</span></a></li>
+                <li th:class="${zero=='hot'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='hot')}"><span>最热</span></a></li>
+                <li th:class="${zero=='no'}? 'active':''"><a th:href="@{/(page=${pagList.page},size=${pagList.size},search=${search},zero='no')}"><span style="color: #E51C37">消灭零回复</span></a></li>
+            </ul>
 
             <hr>
 
@@ -59,10 +59,10 @@ window.onload=function () {
                     </a>
                 </div>
                 <div class="media-body">
-                   <h4 class="media-heading">
-                       <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}" style="text-decoration: none">
-                       </a>
-                   </h4>
+                    <h4 class="media-heading">
+                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}">
+                        </a>
+                    </h4>
                     <span class="desc" >
                         <span th:text="${question.commentCount}"></span>个回复 .
                         <span th:text="${question.viewCount}"></span>次浏览 .
@@ -70,7 +70,7 @@ window.onload=function () {
                     </span>
                     </span>
                     <span th:if="${session.user!=null}">
-                        <a class="pull-right" th:href="@{'/question/'+${question.id}}" style="color: #999">回复</a>
+                        <a class="pull-right" th:href="@{'/question/'+${question.id}}">回复</a>
                     </span>
 
                 </div>
@@ -139,10 +139,11 @@ window.onload=function () {
                 <h4>推荐内容</h4>
 
             </div>
-            </div>
         </div>
     </div>
 </div>
+</div>
+<div th:insert="~{none :: none}" th:if="${pagList.data.isEmpty()}"></div>
 <div th:insert="~{footer :: foot}"></div>
 </body>
 </html>
