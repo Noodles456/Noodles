@@ -35,6 +35,8 @@
     </span>
         <span><a th:class="${search=='java'}? 'active btn btn-defaultdd btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='java',zero=${zero})}" >java</a>
     </span>
+        <span><a th:class="${search=='springMVC'}? 'active btn btn-defaultdd btn-sm': 'btn btn-default btn-sm'" th:href="@{/(page=${pagList.page},size=${pagList.size},search='springMVC',zero=${zero})}" >springMVC</a>
+    </span>
     </div>
 </div>
 <div class="container-fluid main" th:if="${pagList.data.size()!=0}">
